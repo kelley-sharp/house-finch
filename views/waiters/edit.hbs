@@ -1,0 +1,39 @@
+{{> nav currentRoute="/waiters" }}
+
+<div id="waiters-container" class="d-flex justify-content-between">
+
+        {{!-- Form to edit a Waiter --}}
+  <div id="modify-waiter-container" class="m-3">
+      <h2>Modify A Waiter</h2>
+      <p>To modify a waiter, please enter their information below and click `Submit`. Any fields left blank will not be modified</p>
+      <form id="modify-waiter-form" class="d-flex flex-wrap" method="POST" action="/waiters/{{waiter.employee_id}}/edit">
+          <div>
+              <label for="input-id">Employee ID: </label>
+              <input type="number" name="input-id" id="input-id" value={{waiter.employee_id}}>
+          </div>
+          <div>
+              <label for="input-fname">First Name: </label>
+              <input type="text" name="input-fname" id="input-fname-html" value={{waiter.first_name}}>
+          </div>
+          <div>
+              <label for="input-lname">Last Name: </label>
+              <input type="text" name="input-lname" id="input-lname-html" value={{waiter.last_name}}>
+          </div>
+          <div>
+              <label for="input-phone">Phone Number: </label>
+              <input type="number" name="input-phone" id="input-phone-html" value={{waiter.employee_phone_number}}>
+          </div>
+          <div>
+              <label for="shift-preference">Shift Preference:</label>
+              <select id="input-shift-html" name="input-shift" >
+                <option value="NULL" {{isSelected "null" waiter.shift_type_preference}}>No Preference</option>
+                <option value="day" {{isSelected "day" waiter.shift_type_preference}}>Day Shift</option>
+                <option value="swing" {{isSelected "swing" waiter.shift_type_preference}}>Swing Shift</option>
+                <option value="night" {{isSelected "night" waiter.shift_type_preference}}>Night Shift</option>
+              </select>
+          </div>
+          <input type="submit">
+      </form>
+  </div> 
+
+</div>

@@ -1,0 +1,76 @@
+{{> nav currentRoute="/waiters" }}
+
+
+<div id="waiters-container" class="d-flex justify-content-between">
+
+{{!-- Create a table --}}
+    <div id="waiters-table" class="col-4">
+        <div class="d-flex justify-content-start flex-nowrap">
+            <div class="col-3 pt-3 pb-3"><strong>EMPLOYEE ID</strong></div>
+            <div class="col-3 pt-3 pb-3"><strong>FIRST NAME</strong></div>
+            <div class="col-3 pt-3 pb-3"><strong>LAST NAME</strong></div>
+            <div class="col-3 pt-3 pb-3"><strong>PHONE NUMBER</strong></div>
+            <div class="col-3 pt-3 pb-3"><strong>SHIFT PREFERENCE</strong></div>
+        </div>
+            {{!-- For each row, print the data --}}
+            {{#each data}}
+
+                {{#if (isEven @index)}}
+
+                    <div class="d-flex justify-content-start py-1">
+                        <div class="col-3 bg-light">{{this.employee_id}}</div>
+                        <div class="col-3 bg-light">{{this.first_name}}</div>
+                        <div class="col-3 bg-light">{{this.last_name}}</div>
+                        <div class="col-3 bg-light">{{this.employee_phone_number}}</div>
+                        <div class="col-3 bg-light">{{this.shift_type_preference}}</div>
+                        <div class="col-1">
+                            <a class="btn btn-sm btn-success" href="/waiters/{{this.employee_id}}/edit">
+                                Edit
+                            </a>
+                        </div>
+                    </div>
+
+                {{else}}
+
+                    <div class="d-flex justify-content-start">
+                        <div class="col-3">{{this.employee_id}}</div>
+                        <div class="col-3">{{this.first_name}}</div>
+                        <div class="col-3">{{this.last_name}}</div>
+                        <div class="col-3">{{this.employee_phone_number}}</div>
+                        <div class="col-3">{{this.shift_type_preference}}</div>
+                        <div class="col-1">
+                            <a class="btn btn-sm btn-success" href="/waiters/{{this.employee_id}}/edit">
+                                Edit
+                            </a>         
+                        </div>
+                    </div> 
+
+                 {{/if}}               
+
+            {{/each}}
+    </div>          
+
+
+    {{!-- Form to search by last name NOT WORKING--}}
+    <div id="waiter-forms-container" class="d-flex flex-column col-6">
+        <div id="search-waiter-container" class="m-3 mt-5">
+            <h2>Search for waiters</h2>
+            <p>Search for waiters by waiter ID</p>
+            <form id="search-waiter-form" class="d-flex flex-wrap" method='GET' action='/waiters/index'>
+                <div>
+                    <label for="input-id">Waiter ID: </label>
+                    <input type="text" name="id" id="input-id-html-search">
+                </div>
+                <div>
+                    <a href='/'><button>Reset</button></a>
+                </div>
+
+                <input type="submit">
+            </form>
+        </div>
+        <div>
+            <a class="btn btn-warning mt-5" href="/waiters/new" >Add a New Waiter</a>
+        </div>
+    </div>
+</div>
+

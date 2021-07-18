@@ -1,0 +1,34 @@
+{{> nav currentRoute="/waiters" }}
+
+<div id="waiters-container" class="d-flex justify-content-between">
+
+  <div id="add-waiter-container" class="m-3">
+      <h2>Add A Waiter</h2>
+      <p>To add a waiter, please enter their information below and click `Submit`!</p>
+      <form id="add-waiter-form" class="d-flex flex-wrap" method="POST" action="/waiters/new">
+          <div>
+              <label for="input-fname">First Name: </label>
+              <input type="text" name="input-fname" id="input-fname-html">
+          </div>
+          <div>
+              <label for="input-lname">Last Name: </label>
+              <input type="text" name="input-lname" id="input-lname-html">
+          </div>
+          <div>
+              <label for="input-phone">Phone Number: </label>
+              <input type="number" name="input-phone" id="input-phone-html">
+          </div>
+          <div>
+              <label for="shift-preference">Shift Preference:</label>
+              <select id="input-shift-html" name="input-shift">
+              <option value="none">No Preference</option>
+              <option value="day">Day Shift</option>
+              <option value="swing">Swing Shift</option>
+              <option value="night">Night Shift</option>
+              </select>
+          </div>
+          <input type="submit">
+      </form>
+  </div>
+
+</div>
